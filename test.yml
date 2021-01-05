@@ -1,2 +1,0 @@
-- name: Create or Update Comment
-  uses: peter-evans/create-or-update-comment@v1.4.4
