@@ -3,14 +3,15 @@ name: Test_Action
 on: [push]
 
 jobs:
-  build:
+  hello_world_job:
     runs-on: ubuntu-latest
-
+    name: A job to say hello
     steps:
-    - shell: bash
-      run: |
-        echo RUN_ID = $GITHUB_RUN_ID
-        curl \
-        -H "Accept: application/vnd.github.v3+json" \
-        https://api.github.com/repos/JacobDomagala/TestRepo/actions/runs/$GITHUB_RUN_ID/timing
-
+    - name: Hello world action step
+      id: hello
+      uses: actions/hello-world-javascript-action@v1.1
+      with:
+        who-to-greet: $GITHUB_RUN_ID
+    # Use the output from the `hello` step
+    - name: Get the output time
+      run: echo "The time was ${{ steps.hello.outputs.time }}"
