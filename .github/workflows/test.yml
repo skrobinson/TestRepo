@@ -17,3 +17,4 @@ jobs:
             username: ${{ secrets.DOCKER_USERNAME }}
             # Docker registry password
             password: ${{ secrets.DOCKER_PASSWORD }}
+            repository: jdomagala/test-repo
