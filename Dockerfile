@@ -1,5 +1,4 @@
 #Download base image ubuntu 20.04
-FROM ubuntu:20.04
+FROM lifflander1/vt:amd64-ubuntu-18.04-gcc-7-cpp
 
-RUN apt-get update -y -q && \
-    apt-get install -y -q --no-install-recommends
+RUN /vt/ci/build_cpp.sh /vt /build
