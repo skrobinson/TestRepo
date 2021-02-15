@@ -18,6 +18,6 @@ jobs:
       - name: Upload Documentation to Wiki
         uses: JacobDomagala/TestAction@graph-build-time
         with:
-          path: "Documentation"
+          path: "Test"
         env:
           GH_PERSONAL_ACCESS_TOKEN: ${{ secrets.GH_PERSONAL_ACCESS_TOKEN }}
