@@ -21,3 +21,4 @@ jobs:
           path: "Test"
         env:
           GH_PERSONAL_ACCESS_TOKEN: ${{ secrets.GH_PERSONAL_ACCESS_TOKEN }}
+          GH_TOKEN: ${{ github.token }}
