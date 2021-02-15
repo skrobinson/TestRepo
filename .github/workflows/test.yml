@@ -10,11 +10,14 @@ jobs:
 
     steps:
       - uses: actions/checkout@v2
-      - name: Docker Build & Push
-        uses: jerray/publish-docker-action@master
+
+      - shell: bash
+        run: |
+          echo 'test' > test.txt
+
+      - name: Upload Documentation to Wiki
+        uses: JacobDomagala/TestAction@graph-build-time
         with:
-            # Docker registry username
-            username: ${{ secrets.DOCKER_USERNAME }}
-            # Docker registry password
-            password: ${{ secrets.DOCKER_PASSWORD }}
-            repository: jdomagala/test-repo
+          path: "Documentation"
+        env:
+          GH_PERSONAL_ACCESS_TOKEN: ${{ secrets.GH_PERSONAL_ACCESS_TOKEN }}
