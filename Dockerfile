@@ -5,4 +5,4 @@ COPY . /base
 
 FROM base as developer
 
-COPY . /dev
+COPY . /developer
