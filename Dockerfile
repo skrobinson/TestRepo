@@ -3,6 +3,6 @@ FROM ubuntu as base
 
 COPY . /base
 
-FROM base as dev
+FROM base as developer
 
 COPY . /dev
