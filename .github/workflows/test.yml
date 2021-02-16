@@ -11,14 +11,9 @@ jobs:
     steps:
       - uses: actions/checkout@v2
 
-      - shell: bash
-        run: |
-          echo 'test' > test.txt
-
       - name: Upload Documentation to Wiki
         uses: JacobDomagala/TestAction@graph-build-time
-        with:
-          path: "Test"
         env:
           GH_PERSONAL_ACCESS_TOKEN: ${{ secrets.GH_PERSONAL_ACCESS_TOKEN }}
-          GH_TOKEN: ${{ github.token }}
+          GITHUB_TOKEN: ${{ github.token }}
+          WORKFLOW_NAME: test.yml
