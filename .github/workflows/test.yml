@@ -14,7 +14,8 @@ jobs:
       - name: Upload Documentation to Wiki
         uses: JacobDomagala/TestAction@graph-build-time
         with:
-          github-personal-token: ${{ secrets.GH_PERSONAL_ACCESS_TOKEN }}
-          github-token: ${{ github.token }}
-          workflow-name: test.yml
+          github_personal_token: ${{ secrets.GH_PERSONAL_ACCESS_TOKEN }}
+          github_token: ${{ github.token }}
+          workflow: test.yml
+          filename: build_times.png
 
