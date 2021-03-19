@@ -1,8 +1,8 @@
-#Download base image ubuntu 20.04
-FROM ubuntu as base
+FROM ubuntu:latest as base
 
-COPY . /base
+FROM base as first
+RUN echo "file contents" > script.sh
 
-FROM base as developer
+FROM first as second
+RUN echo "file contents2" > script2.sh
 
-COPY . /developer
