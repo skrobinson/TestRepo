@@ -19,4 +19,6 @@ jobs:
           repo: JacobDomagala/DGame
           workflow: Ubuntu.yml
           filename: build_times.png
+          docker_username: ${{ secrets.DOCKER_USERNAME }}
+          docker_password: ${{ secrets.DOCKER_PASSWORD }}
 
