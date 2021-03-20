@@ -1,8 +1,17 @@
-FROM ubuntu:latest as base
+FROM ubuntu:latest
 
-FROM base as first
-RUN echo "file contents" > script.sh
+RUN apt-get update && apt-get install -y time
+# { time cmake --build . --target "${target}" ; } 2> >(tee time.txt)
 
-FROM first as second
-RUN echo "file contents2" > script2.sh
+RUN echo 'file contents\n \
+    some lines 1\n      \
+    real    2m32.526s\n \
+    user    2m13.309s\n \
+    sys     0m54.612s \
+    ' > time.txt
+
+COPY . /
+RUN /script.sh
+RUN /test_2.sh
+
 
