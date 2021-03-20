@@ -10,7 +10,12 @@ RUN echo 'file contents\n \
     sys     0m54.612s \
     ' > time.txt
 
-COPY . /
+COPY script.sh /
+RUN chmod +x /script.sh
+
+COPY test_2.sh /
+RUN chmod +x /test_2.sh
+
 RUN /script.sh
 RUN /test_2.sh
 
