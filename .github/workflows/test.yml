@@ -22,4 +22,7 @@ jobs:
           docker_username: ${{ secrets.DOCKER_USERNAME }}
           docker_password: ${{ secrets.DOCKER_PASSWORD }}
           docker_repository: jdomagala/test-repo
+          graph_width: 19
+          graph_height: 8
+
 
