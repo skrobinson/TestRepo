@@ -20,4 +20,5 @@ jobs:
       uses: JacobDomagala/StaticAnalysis@make-it-work-on-fork
       with:
         verbose: true
-        root_dir: pr_tree
+        exclude_dir: lib
+        cmake_args: -DCMAKE_BUILD_TYPE=Debug
