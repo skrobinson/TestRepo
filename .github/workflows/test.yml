@@ -1,56 +1,13 @@
-name: Docker Image CI and graph
+name: Static analysis
 
-on:
-  # Trigger the workflow on push or pull request,
-  # but only for the master branch
-  push:
-    branches:
-      - main
-      - master
-      - develop
-      - 1.*
+on: [pull_request]
 
 jobs:
-
-  build:
-
+  static analysis:
     runs-on: ubuntu-latest
-    env:
-      LAST_BUILD_TIME: 0
 
     steps:
-      - uses: actions/checkout@v2
+    - uses: actions/checkout@v2
 
-      - name: Docker Build & Push
-        shell: bash
-        run: |
-          docker build -t jdomagala/repo:${{ github.ref }} .
-
-          containerId=$(docker create jdomagala/repo:${{ github.ref }})
-          docker cp "$containerId":/.build_time.txt ./last_build.txt
-          docker rm "$containerId"
-
-          cat last_build.txt
-          build_time=$(grep -oP 'real\s+\K\d+m\d+\.\d+s' last_build.txt)
-
-          echo "LAST_BUILD_TIME=$build_time" >> $GITHUB_ENV
-          echo ${{ env.LAST_BUILD_TIME }}
-
-          echo "${{ secrets.DOCKER_PASSWORD }}" | docker login -u ${{ secrets.DOCKER_USERNAME }} --password-stdin docker.io
-          docker push jdomagala/repo:${{ github.ref }}
-
-      - name: Generate graph and badge
-        # Don't generate graph/badge for releases
-        if: github.ref == 'refs/heads/develop'
-        uses: JacobDomagala/TestAction@master
-        with:
-            last_build_time: ${{ env.LAST_BUILD_TIME }}
-            github_personal_token: ${{ secrets.GH_PAT }}
-            graph_filename: build_times_tmp.png
-            badge_filename: build_time_badge_tmp.svg
-            badge_title: build times
-            badge_logo: Docker
-            num_last_build: 50
-            title: vt build times
-            graph_width: 19
-            graph_height: 8
+    - name: Run static analysis
+      uses: JacobDomagala/StaticAnalysis@master
