@@ -1,13 +1,15 @@
 name: Static analysis
 
-on: [pull_request]
+on: [push, pull_request]
 
 jobs:
-  static analysis:
+  static_analysis:
     runs-on: ubuntu-latest
 
     steps:
     - uses: actions/checkout@v2
 
     - name: Run static analysis
-      uses: JacobDomagala/StaticAnalysis@master
+      uses: JacobDomagala/StaticAnalysis@25-work-on-push
+      with:
+        verbose: true
