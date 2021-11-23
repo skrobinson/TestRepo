@@ -18,13 +18,6 @@ jobs:
     steps:
     - uses: actions/checkout@v2
 
-    - name: Checkout PR tree
-      uses: actions/checkout@v2
-      with:
-        ref: ${{github.event.pull_request.head.ref}}
-        repository: ${{github.event.pull_request.head.repo.full_name}}
-        path: pr_tree
-
     - name: Run static analysis
       uses: JacobDomagala/StaticAnalysis@make-it-work-on-fork
       with:
