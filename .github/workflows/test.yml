@@ -19,7 +19,7 @@ jobs:
     - uses: actions/checkout@v2
 
     - name: Run static analysis
-      uses: JacobDomagala/StaticAnalysis@make-it-work-on-fork
+      uses: JacobDomagala/StaticAnalysis@master
       with:
         verbose: true
         exclude_dir: lib
