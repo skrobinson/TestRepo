@@ -1,15 +1,6 @@
 name: Static analysis
 
-on:
-  push:
-    branch:
-      - develop
-      - master
-      - main
-
-  pull_request_target:
-    branch:
-      - "*"
+on: pull_request_target
 
 jobs:
   static_analysis:
